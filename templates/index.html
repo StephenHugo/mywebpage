@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block body%}
+	<h1>Welcome!</h1>
+	<p>My name is Stephen, and this is a draft of my webpage!</p>
+	{% with messages = get_flashed_messages() %}
+		{% for message in messages %}
+			{{ message }}
+		{% endfor %}
+	{% endwith %}
+{% endblock %}

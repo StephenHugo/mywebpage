@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Stephen Hugo Arce</title>
+		<link rel="stylesheet" type="text/css" href="/static/style.css" />
+	</head>
+	<body>
+		<div id="content">
+			{% block body %}{% endblock %}
+		</div>
+		<div id="nav">
+			<img src="/static/face.jpg">
+			<ul>
+				{% block nav %}{% endblock %}
+				<li>Home</li>
+				<li>Projects</li>
+				<li>About Me</li>
+			</ul>
+		</div>
+	</body>
+</html>
