@@ -5,4 +5,4 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello():
-    return 'I AM THE KING OF WEB DEVELOPMENT!'
+    return 'I followed the directions on Heroku to create this page.'
