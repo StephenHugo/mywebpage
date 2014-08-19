@@ -1,1 +1,1 @@
-web: gunicorn manage:app --log-file=-
+web: gunicorn webby:app --log-file=-
