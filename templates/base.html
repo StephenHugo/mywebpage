@@ -3,19 +3,23 @@
 	<head>
 		<title>Stephen Hugo Arce</title>
 		<link rel="stylesheet" type="text/css" href="/static/style.css" />
+		<link rel="icon" href="/static/face.ico" type="image/icon"> 
+		{% block heady %}{% endblock %}
 	</head>
-	<body>
+	<body>	
+		<div id="nav">	
+			<img src="/static/face.jpg">
+			<b>
+				<a href="/">Home</a>
+				- <a href="/conway">Projects</a>
+				- <a href="/about">About</a>
+			</b>
+				
+		</div>
+		
 		<div id="content">
 			{% block body %}{% endblock %}
 		</div>
-		<div id="nav">
-			<img src="/static/face.jpg">
-			<ul>
-				{% block nav %}{% endblock %}
-				<li>Home</li>
-				<li>Projects</li>
-				<li>About Me</li>
-			</ul>
-		</div>
+		
 	</body>
 </html>
