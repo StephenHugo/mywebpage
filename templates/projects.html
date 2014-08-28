@@ -7,9 +7,9 @@
 				{% for message in messages %}
 					<p id="homepage">The loaded image was processed by a high boost filter. 
 						First, the input image is convolved by a 7x7 pixel disk kernel, then that result is subtracted from the original image.
-						Right-click to save or get a url to post this image elsewhere.
-						<a href="{{ url_for('projects.index') }}">Would you like to try a different image?</a></p>
-					<img src="/processed?link={{message}}">
+						Click to save or get a url to post this image elsewhere.<br>
+						<center><a href="{{ url_for('projects.index') }}">Would you like to try a different image?</a></center></p>
+					<a href="/processed?link={{message}}"><img src="/processed?link={{message}}"></a>
 					<p id="homepage">For a less technical explanation, pretend an image is like a sandcastle where the towers represent bright parts of the picture and the moat represents darker parts. 
 						The disk kernel makes a blurry version of the input image, much like a sandcastle would get smoothed out by a wave. 
 						As you increase the size of the kernel from 7x7 pixels, it would do more smoothing like a larger wave would flatten your sandcastle more. 
@@ -26,7 +26,7 @@
 					<form>
 						Enter an image url:
 						<input type="text" value="https://farm4.staticflickr.com/3739/9662657582_0956c7ee4c.jpg" name="link">
-						<button type="submit" formmethod="post">Load</button>
+						<br><br><button type="submit" formmethod="post">Click here to process the image!</button>
 					</form>
 				</div></center>
 			{% endif %}
