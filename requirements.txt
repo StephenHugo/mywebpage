@@ -3,6 +3,6 @@ SQLAlchemy==0.9.4
 flask==0.10.1
 gunicorn==19.1.0
 werkzeug==0.9.6
-PIL
+Pillow==2.4.0
 requests==2.3.0
 scipy==0.14.0
