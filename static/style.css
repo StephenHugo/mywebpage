@@ -1,31 +1,41 @@
 body {
 	font-family: 'Georgia', serif;
-	color: #7777BB;
+	color: #444466;
 	background: #000;
-	margin-left: auto;
-	margin-right: auto;
-	width: 768px;
-}
-
-a {
-	color: #7777BB;
-	text-decoration: underline;
 }
 
 #nav {
 	margin-top: 5px;
-	float: left;
+	margin-left: auto;
+	margin-right: auto;
+	width: 50%;
 }
 
-b {
+#nav a:link {
+	color: #444466;
+	text-decoration: none;
+}
+
+#nav a:hover {
+	color: #AA2222;
+	text-decoration: none;
+}
+
+#nav b {
 	display: inline-block;
 }
 
 #content {
-	float: left;
-	margin-left: 105px;
-	margin-top: 10px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 20px;
+	width: 90%;
 	text-align: justify;
+}
+
+#content a {
+	color: #AA2222;
+	text-decoration: none;
 }
 
 .board {
@@ -33,20 +43,30 @@ b {
 	margin-right: auto;
 	top: 5px;
 	left: 5px;
-
 }
 
 .clicked {
 
 }
 
-td {
+.board td {
 
 	width: 15px;
 	height: 15px;
 	background-color: #BBBBEE;
 }
 
-td.alive {
+.board td.alive {
 	background-color: #CCEEDD;
+}
+
+button {
+	background: #000;
+	color: #444466;
+	border: solid 1px #333;
+}
+
+#second img {
+	disply: inline;
+	border: solid 1px #FFF;
 }

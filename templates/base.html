@@ -10,13 +10,12 @@
 		<div id="nav">	
 			<img src="/static/face.jpg">
 			<b>
-				<a href="/">Home</a>
-				- <a href="/conway">Projects</a>
-				- <a href="/about">About</a>
+				<a href="{{ url_for('home.index') }}">Home</a>
+				- <a href="{{ url_for('projects.index') }}">Projects</a>
+				- <a href="{{ url_for('about.index') }}">About</a>
 			</b>
-				
 		</div>
-		
+
 		<div id="content">
 			{% block body %}{% endblock %}
 		</div>

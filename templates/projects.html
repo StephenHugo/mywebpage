@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block body%}
+	<center><div id="first">
+		<form>
+			Enter an image url:
+			<input type="text" value="https://farm4.staticflickr.com/3739/9662657582_0956c7ee4c.jpg" name="link">
+			<button type="submit" formmethod="post">Load</button>
+		</form>
+	</div></center>
+	<center><div id="second">
+		<p>This will be text to describe the filter process in detail.</p>
+		{% with messages = get_flashed_messages() %}
+			{% if messages %}
+				{% for message in messages %}
+					<img src="/processed?link={{message}}">
+				{% endfor %}
+			{% endif %}
+		{% endwith %}
+	</div></center>
+{% endblock %}
