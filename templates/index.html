@@ -1,10 +1,15 @@
 {% extends "base.html" %}
 {% block body%}
+<div id="homepage">
 	<h1>Welcome!</h1>
-	<p>My name is Stephen, and this is the 2nd draft of my webpage! 
-		I've added click-able links to the navigation bar, and some initial content.
-		Try out the links by that handsome gentleman in the picture...</p>
+	<p>My name is Stephen. I received my PhD in chemical engineering from the University of Florida in August, 2014.
+		My thesis initially focused on single-cell mechanics and migration, a field known as biophysics. 
+		As I learned more about cell behaviour and gathered data, image processing became a necessary component to my project.
+		In the future, I hope to utilize my unique biological perspective and skill set to improve our current understanding of medical imaging through education and direct contributions.
+		<br><br>This page was created with those goals in mind. 
+		For now, I've added a program to the Projects section that accepts a link to an image and returns a processed version of that image. 
+		<a href="{{ url_for('projects.index') }}">Please go take a look!</a></p>
 		
-	<p>To do: add publications, code from grad school, awards, etc.</p>
-	
+	<p>To do: more projects, add publications, awards, etc.</p>
+</div>
 {% endblock %}

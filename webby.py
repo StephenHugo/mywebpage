@@ -1,10 +1,9 @@
-import os
 from flask import Flask, render_template, Blueprint, redirect, send_file, flash
 from flask import request as req
 import requests
 from StringIO import StringIO as sIO
 from PIL import Image as img
-import numpy as np
+from numpy import array, double, max
 from newt import newt
 
 app = Flask(__name__)
@@ -42,13 +41,13 @@ def index():
 		im = img.open(sIO(res.content))
 		
 		# convert the PIL image to a numpy array and turn it into a newt image
-		pic = newt(np.array(im, dtype=np.double))
+		pic = newt(array(im, dtype=double))
 		
 		# do a convolution with a 7x7 disk
 		pic.dhat('d 7')
 		
 		# revert to PIL format
-		pic = 255*pic.pic/np.max(pic.pic)
+		pic = 255*pic.pic/max(pic.pic)
 		im = img.fromarray(pic.astype('uint8'))
 		
 		# save the new image

@@ -25,6 +25,13 @@ body {
 	display: inline-block;
 }
 
+#homepage {
+	margin-left: auto;
+	margin-right: auto;
+	width: 768px;
+	text-align: justify;
+}
+
 #content {
 	margin-left: auto;
 	margin-right: auto;
