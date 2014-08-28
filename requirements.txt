@@ -1,9 +1,8 @@
 Jinja2==2.7.2
 SQLAlchemy==0.9.4
-
 flask==0.10.1
 gunicorn==19.1.0
-
-
 werkzeug==0.9.6
-
+PIL
+requests==2.3.0
+scipy==0.14.0
