@@ -7,6 +7,7 @@
 				{% for message in messages %}
 					<p id="homepage">The loaded image was processed by a high boost filter. 
 						First, the input image is convolved by a 7x7 pixel disk kernel, then that result is subtracted from the original image.
+						Right-click to save or get a url to post this image elsewhere.
 						<a href="{{ url_for('projects.index') }}">Would you like to try a different image?</a></p>
 					<img src="/processed?link={{message}}">
 					<p id="homepage">For a less technical explanation, pretend an image is like a sandcastle where the towers represent bright parts of the picture and the moat represents darker parts. 
