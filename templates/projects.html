@@ -1,35 +1,26 @@
 {% extends "base.html" %}
-{% block body%}
+{% block body %}
 	
-	<center><div id="second">
+	<div id="second"><center>
 		{% with messages = get_flashed_messages() %}
 			{% if messages %}
 				{% for message in messages %}
-					<p id="homepage">The loaded image was processed by a high boost filter. 
-						First, the input image is convolved by a 7x7 pixel disk kernel, then that result is subtracted from the original image.
-						Click to save or get a url to post this image elsewhere.<br>
-						<center><a href="{{ url_for('projects.index') }}">Would you like to try a different image?</a></center></p>
-					<a href="/processed?link={{message}}"><img src="/processed?link={{message}}"></a>
-					<p id="homepage">For a less technical explanation, pretend an image is like a sandcastle where the towers represent bright parts of the picture and the moat represents darker parts. 
-						The disk kernel makes a blurry version of the input image, much like a sandcastle would get smoothed out by a wave. 
-						As you increase the size of the kernel from 7x7 pixels, it would do more smoothing like a larger wave would flatten your sandcastle more. 
-						<br><br>Subtracting the filter result from the original picture is like removing the sand under the original sandcastle where it would be smoothed by a wave.
-						This gives a strange-looking image that features enhanced edges around objects.
-						Those edges are known as high frequency image content because as you move from one pixel to the next, the color value changes dramatically.
-						In terms of a sandcastle, consider a hermit crab walking around and not being able to scale the wall because it was too steep: that's like an object edge in an image.
-						After the subtraction operation, the image values get rescaled to be properly displayed as an image and sent back to your browser.
-						<br><br>I hope you enjoy this project!</p>
+					{% block highboost %}{% endblock %}
 					
 				{% endfor %}
 			{% else %}
 				<center><div id="first">
 					<form>
-						Enter an image url:
-						<input type="text" value="https://farm4.staticflickr.com/3739/9662657582_0956c7ee4c.jpg" name="link">
-						<br><br><button type="submit" formmethod="post">Click here to process the image!</button>
+						<p>This section allows you to try out several image processing filters using links to your own images
+						(or get one from <a href="https://www.flickr.com/explore/interesting/7days/">Flickr</a>)!</p>
+						Please, enter an image url:
+						<input type="text" value="" name="link"><button type="submit" value="none" name="button" formmethod="post">Clear</button>
+						<br><br>
+						<button type="submit" value="highboost" name="button" formmethod="post">High boost filter</button>
+						<button type="submit" value="laplacian" name="button" formmethod="post">Laplacian filter</button>
 					</form>
 				</div></center>
 			{% endif %}
 		{% endwith %}
-	</div></center>
+	</center></div>
 {% endblock %}

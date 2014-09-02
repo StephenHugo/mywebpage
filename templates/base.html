@@ -7,14 +7,19 @@
 		{% block heady %}{% endblock %}
 	</head>
 	<body>	
+	<img style="float:left" src="/static/face.jpg">
+		
 		<div id="nav">	
-			<img src="/static/face.jpg">
 			<b>
 				<a href="{{ url_for('home.index') }}">Home</a>
+				- <a href="{{ url_for('home.research') }}">Research</a>
 				- <a href="{{ url_for('projects.index') }}">Projects</a>
-				- <a href="{{ url_for('about.index') }}">About this page</a>
+				- <a href="{{ url_for('home.publications') }}">Publications/Presentations</a>
+				- <a href="{{ url_for('home.honors') }}">Honors/Awards</a>
+				- <a href="{{ url_for('home.about') }}">About</a>
 			</b>
 		</div>
+		
 
 		<div id="content">
 			{% block body %}{% endblock %}

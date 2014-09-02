@@ -1,0 +1,16 @@
+{% extends "projects.html" %}
+{% block highboost %}
+	
+	{% with messages = get_flashed_messages() %}
+		{% if messages %}
+			{% for message in messages %}
+				<p id="publication">The loaded image was processed by a Laplacian filter. 
+					This is a high pass, "edge detection", filter that enhances differences in image intensity, promoting bright lines around objects.
+					Click to save or get a url to post this image elsewhere.<br>
+					<center><a href="#" onClick="history.go(-1);return true;">Would you like to try something different?</a></center></p>
+				<a href="/laplacian?link={{message}}"><img src="/laplacian?link={{message}}"></a>
+				
+			{% endfor %}
+		{% endif %}
+	{% endwith %}
+{% endblock %}

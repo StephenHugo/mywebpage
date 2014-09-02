@@ -49,7 +49,8 @@ class newt:
 			x, y = meshgrid(x,x)
 			kernel = sqrt(x**2+y**2)<=n/2
 		elif (type=='lap'):
-			kernel = array([[-1., -1., -1.],[-1., 9., -1.],[-1., -1., -1.]])
+			kernel = -ones([n, n])
+			kernel[n//2,n//2] = n**2-0.9
 		return array(kernel, dtype=double)
 		
 		

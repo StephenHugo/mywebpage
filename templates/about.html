@@ -1,13 +1,34 @@
 {% extends "base.html" %}
+{% block heady%}
+	<script type="text/javascript" src="/static/jquery-1.11.1.min.js"></script>
+		<script type="text/javascript" src="/static/life.js"></script>
+{% endblock %}
 {% block body%}
-	<div id="homepage">
-	<p>This page is hosted on <a href="https://www.heroku.com/">Heroku</a>, running <a href="https://www.python.org/">Python</a> with <a href="http://flask.pocoo.org/">Flask</a>.
+<div id="homepage">
+	<center><h1>About Me</h1></center>
+</div>
+
+	<div id="aboutme">
+	
+		Please, check out <b><a href="https://github.com/StephenHugo">my Github</a></b> to get the code for this page and other projects I can share. 
+		I am fluent in <a href="http://www.mathworks.com/products/matlab/">MATLAB</a> and now python, with moderate experience with C++, java, javascript, and good knowledge of <a href="http://imagej.nih.gov/ij/">ImageJ</a>.
+		On the other hand, I'm experienced with cell culture, protein purification, molecular biology, rheology and microscopy. 
+		Before joining the Chemical Engineering department at UF, I had volunteer experience at Arnold Palmer children's Hospital in Orlando, Fl, as well as an internship at the Jacksonville Cardiovascular Center in Jacksonville, FL. 
+		Before that, I had received a first responder's licence from Santa Fe College in Gainesville, Fl. 
+		I have a passion for people and health, and the capability to improve their lives through education and hard work.
+		<br><br>
+		<center>My gmail address is 'stephenhugo'. Feel free to contact me.</center>
+		<br>
+		This page is hosted on <a href="https://www.heroku.com/">Heroku</a>, running <a href="https://www.python.org/">Python</a> with <a href="http://flask.pocoo.org/">Flask</a>.
 		The Heroku support and documentation are outstanding, as is the Flask documentation, but I wouldn't have gotten off the ground at all were it not for <a href="http://blog.miguelgrinberg.com/">Miguel Grinberg</a> and his wonderful <a href="https://speakerdeck.com/miguelgrinberg/flask-by-example-pycon-2014">talk</a>.
-		This webpage application is built from his template, cloned from github.</p>
-	<p>My <a href="https://github.com/StephenHugo">Github</a> contains the code for this page, as well as for the Javascipt/Jquery-powered <a href="http://en.wikipedia.org/wiki/Conway%27s_Game_of_Life">Conway: Game of Life</a> script running in my projects section. 
-		I coded it following direction from <a href="https://www.youtube.com/watch?v=fwwg81Zsj3c">Guido Tapia</a>, and added my own tweaks to allow click-ability!
-		Please enjoy that little game for what it's worth, and check back later for improvements and revisions!</p>
+		This webpage application was built from his initial direction.
 	</div>
+	<br>
+	<center><a href="http://en.wikipedia.org/wiki/Conway%27s_Game_of_Life">Conway: Game of Life</a></center>
+	<table id='main' class='board'></table>
+	<center>Click me!<br>Coded following the direction of <a href="https://www.youtube.com/watch?v=fwwg81Zsj3c">Guido Tapia</a>, with my own tweaks to allow click-ability.</p>
+	</div></center>
+	
 	
 
 {% endblock %}

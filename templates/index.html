@@ -1,15 +1,30 @@
 {% extends "base.html" %}
 {% block body%}
+
 <div id="homepage">
-	<h1>Welcome!</h1>
-	<p>My name is Stephen. I received my PhD in chemical engineering from the University of Florida in August, 2014.
-		My thesis initially focused on single-cell mechanics and migration, a field known as biophysics. 
-		As I learned more about cell behaviour and gathered data, image processing became a necessary component to my project.
-		In the future, I hope to utilize my unique biological perspective and skill set to improve our current understanding of medical imaging through education and direct contributions.
-		<br><br>This page was created with those goals in mind. 
-		For now, I've added a program to the Projects section that accepts a link to an image and returns a processed version of that image. 
-		<a href="{{ url_for('projects.index') }}">Please go take a look!</a></p>
-		
-	<p>To do: more projects, add publications, awards, etc.</p>
+	<center><h1>Welcome!</h1></center>
 </div>
+<div id="publication">
+	My name is Stephen. I received my PhD in chemical engineering from the University of Florida in August, 2014.
+	My thesis initially focused on single-cell mechanics and migration, a field known as biophysics. 
+	As I learned more about cell behaviour and gathered data, image processing became a necessary component to my project.
+	The experience granted me a unique perspective and multidisciplinary skill set, which I want to utilize in the future to teach and directly contribute to new technologies.
+	<br><br><center>This website was created with those goals in mind.</center>
+	
+		<p><a href="{{ url_for('home.research') }}">Research</a>: The major themes of my research are explained in this section.
+			I believe that the shape of migrating cells can tell us more than we think.</p>
+		<p><a href="{{ url_for('projects.index') }}">Projects</a>: Perform image processing on your own images using the power of Python, over the server!</p>
+		<p><a href="{{ url_for('home.publications') }}">Publications/Presentations</a>: My colleagues and I are continually working on new publications, but here are the completed products. 
+			I have presented my work several times as well, and am proud to have guided my recent undregraduate partners in presenting our joint work.</p>
+		<p><a href="{{ url_for('home.honors') }}">Honors and Awards</a>: This page acknowledges the support I received throughout my graduate life.</p>
+		<a href="{{ url_for('home.about') }}">About</a>: Here, I explain how this website was created, and list some of my more technical abilities.
+		
+</div>
+<br>
+<br>
+<div id="homepage">
+	<center><a href="#">Return to Top</a></center>
+</div>
+<br>
+<br>
 {% endblock %}

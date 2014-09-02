@@ -1,6 +1,6 @@
-var dimension = 16;
-var chanceOfLiveCell = 0.5;
-var timestep = 80;
+var dimension = 20;
+var chanceOfLiveCell = 0;
+var timestep = 100;
 var table;
 var cells;
 var track=-1;
@@ -100,7 +100,7 @@ function renderGen() {
 }
 
 function prepGen() {
-	var count = 100;
+	var count = 50;
 	for (var y = 0; y< dimension; y++) {
 		for (var x = 0; x< dimension; x++) {
 			var cell = getCell(x, y);

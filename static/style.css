@@ -1,35 +1,68 @@
 body {
 	font-family: 'Georgia', serif;
-	color: #444466;
-	background: #000;
+	color: rgb(20, 12, 28);
+	background: rgb(222, 238, 238);
 }
 
 #nav {
+	position: relative;
 	margin-top: 5px;
-	margin-left: auto;
+	margin-left: 12px;
+	padding-left: 3px;
+	padding-right: 3px;
 	margin-right: auto;
-	width: 50%;
+	display: inline-block;
+	background: rgb(202, 218, 218);
+	border: solid 1px rgb(20, 12, 28);
 }
 
 #nav a:link {
-	color: #444466;
+	color: rgb(20, 12, 28);
 	text-decoration: none;
 }
 
 #nav a:hover {
-	color: #AA2222;
+	color: rgb(238, 40, 42);
 	text-decoration: none;
 }
 
-#nav b {
-	display: inline-block;
+#aboutme {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 12px;
+	padding-right: 12px;
+	width: 65%;
+	text-align: justify;
+	background: rgb(202, 218, 218);
+}
+
+#publication {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 12px;
+	padding-right: 12px;
+	width: 65%;
+	text-align: justify;
+	background: rgb(202, 218, 218);
+}
+
+#authors {
+	padding-left: 24px;
+}
+
+#publication a{
+	padding-left: 12px;
 }
 
 #homepage {
 	margin-left: auto;
 	margin-right: auto;
 	width: 768px;
-	text-align: justify;
+	text-align: justify;	
 }
 
 #content {
@@ -41,7 +74,7 @@ body {
 }
 
 #content a {
-	color: #AA2222;
+	color: rgb(238, 40, 42);
 	text-decoration: none;
 }
 
@@ -58,8 +91,8 @@ body {
 
 .board td {
 
-	width: 15px;
-	height: 15px;
+	width: 5px;
+	height: 5px;
 	background-color: #BBBBEE;
 }
 
@@ -68,12 +101,17 @@ body {
 }
 
 button {
-	background: #000;
-	color: #444466;
+	background: rgb(202, 218, 218);
+	color: rgb(238, 40, 42);
 	border: solid 1px #333;
+	display: inline;
 }
 
 #second img {
 	disply: inline;
 	border: solid 1px #FFF;
+}
+
+input {
+	margin-right: 5px;
 }
