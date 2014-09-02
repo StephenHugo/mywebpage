@@ -7,7 +7,7 @@ from numpy import array, double, max, min
 from newt import newt
 
 app = Flask(__name__)
-app.secret_key = 'fez'
+app.secret_key = 'qq\xf8\xfda\xda\x8b9\xd4t}\xfc*\x8a\x86\xd2\x0eR \xa5\xe9^\xaa4'
 
 home = Blueprint('home', __name__)
 projects = Blueprint('projects', __name__)
@@ -53,7 +53,7 @@ def index():
 	else:
 		return render_template('projects.html')
 	 
-@process.route('/process')
+@process.route('/processed')
 def highboost():
 	url = req.args.get('link')
 	if not url:
