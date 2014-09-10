@@ -7,12 +7,12 @@
 		{% block heady %}{% endblock %}
 	</head>
 	<body>	
-	<img style="float:left" src="/static/face.jpg">
+	<img style="float:left" src="/static/img/face.jpg">
 		
 		<div id="nav">	
 			<b>
 				<a href="{{ url_for('home.index') }}">Home</a>
-				- <a href="{{ url_for('home.research') }}">Research</a>
+				- <a href="{{ url_for('research.index') }}">Research</a>
 				- <a href="{{ url_for('projects.index') }}">Projects</a>
 				- <a href="{{ url_for('home.publications') }}">Publications/Presentations</a>
 				- <a href="{{ url_for('home.honors') }}">Honors/Awards</a>

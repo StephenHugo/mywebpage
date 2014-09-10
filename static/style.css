@@ -16,12 +16,32 @@ body {
 	border: solid 1px rgb(20, 12, 28);
 }
 
+#nav2 {
+	position: relative;
+	margin-bottom: 12px;
+	padding-left: 3px;
+	padding-right: 3px;
+	display: inline-block;
+	background: rgb(202, 218, 218);
+	border: solid 1px rgb(20, 12, 28);
+}
+
 #nav a:link {
 	color: rgb(20, 12, 28);
 	text-decoration: none;
 }
 
 #nav a:hover {
+	color: rgb(238, 40, 42);
+	text-decoration: none;
+}
+
+#nav2 a:link {
+	color: rgb(20, 12, 28);
+	text-decoration: none;
+}
+
+#nav2 a:hover {
 	color: rgb(238, 40, 42);
 	text-decoration: none;
 }

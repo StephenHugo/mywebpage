@@ -2,8 +2,17 @@
 {% block body%}
 
 <div id="homepage">
-	<center><h1>Research</h1></center>
-	<center><p>- Under construction -</p></center>
+	<center><h1>Research</h1>
+	<div id="nav2">	
+	<b>
+		<a href="{{ url_for('research.index') }}">Overview</a>
+		- <a href="{{ url_for('research.asf') }}">Cell Boundaries</a>
+	</b>
 </div>
+	</center>
+</div>
+
+	{% block topics %}{% endblock %}
+
 
 {% endblock %}

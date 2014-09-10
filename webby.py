@@ -12,14 +12,19 @@ app.secret_key = 'qq\xf8\xfda\xda\x8b9\xd4t}\xfc*\x8a\x86\xd2\x0eR \xa5\xe9^\xaa
 home = Blueprint('home', __name__)
 projects = Blueprint('projects', __name__)
 process = Blueprint('process', __name__)
+research = Blueprint('research', __name__)
 
 @home.route('/')
 def index():
    return render_template('index.html')
 	
-@home.route('/research')
-def research():
-	return render_template('research.html')
+@research.route('/research')
+def index():
+	return render_template('researchindex.html')
+	
+@research.route('/research/asf')
+def asf():
+	return render_template('asf.html')
 	
 @home.route('/publications')
 def publications():
@@ -123,6 +128,7 @@ def laplacian():
 app.register_blueprint(home)
 app.register_blueprint(projects)
 app.register_blueprint(process)
+app.register_blueprint(research)
 
 if __name__ == '__main__':
 	app.debug = True
