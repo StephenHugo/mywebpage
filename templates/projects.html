@@ -5,7 +5,7 @@
 		{% with messages = get_flashed_messages() %}
 			{% if messages %}
 				{% for message in messages %}
-					{% block highboost %}{% endblock %}
+					{% block filterinfo %}{% endblock %}
 					
 				{% endfor %}
 			{% else %}
@@ -16,8 +16,10 @@
 						Please, enter an image url:
 						<input type="text" value="" name="link"><button type="submit" value="none" name="button" formmethod="post">Clear</button>
 						<br><br>
+						<button type="submit" value="asf" name="button" formmethod="post">Automated Spatial Filtering</button>
 						<button type="submit" value="highboost" name="button" formmethod="post">High boost filter</button>
 						<button type="submit" value="laplacian" name="button" formmethod="post">Laplacian filter</button>
+						
 					</form>
 				</div></center>
 			{% endif %}
