@@ -3,8 +3,8 @@ from numpy import array, max, ones, double, arange, meshgrid, sqrt, median, std,
 from scipy.ndimage.filters import convolve as vconv
 
 class newt:
-	orig = array([0])
-	pic = orig
+	pic = array([0])
+	pic = pic
 
 	def __init__(self, pic):
 		self.max = max(pic)
@@ -26,19 +26,19 @@ class newt:
 		
 		kernel = self.kernelmaker(kernel)
 		for color in range(3):		
-			self.pic[:,:][:,:,color] = vconv(self.orig[:,:][:,:,color],\
+			self.pic[:,:][:,:,color] = vconv(self.pic[:,:][:,:,color],\
 													kernel,mode='constant',cval=0.0)/\
-													vconv(ones(self.orig[:,:][:,:,color].shape),kernel,mode='constant',cval=0.0)
+													vconv(ones(self.pic[:,:][:,:,color].shape),kernel,mode='constant',cval=0.0)
 		return self
 		
 	def highboost(self,kernel='d 17'):
 		
 		kernel = self.kernelmaker(kernel)
 		for color in range(3):
-			m = median(self.orig[:,:][:,:,color])
-			self.pic[:,:][:,:,color] = self.pic[:,:][:,:,color] - vconv(self.orig[:,:][:,:,color],\
+			m = median(self.pic[:,:][:,:,color])
+			self.pic[:,:][:,:,color] = self.pic[:,:][:,:,color] - vconv(self.pic[:,:][:,:,color],\
 													kernel,mode='constant',cval=0.0)/\
-													vconv(ones(self.orig[:,:][:,:,color].shape),kernel,mode='constant',cval=0.0)\
+													vconv(ones(self.pic[:,:][:,:,color].shape),kernel,mode='constant',cval=0.0)\
 													+m
 		return self
 		
@@ -46,17 +46,17 @@ class newt:
 		
 		kernel = self.kernelmaker(kernel)
 		for color in range(3):
-			orig = self.pic[:,:][:,:,color]
-			m = median(orig)
-			st = std(orig)
-			orig -= m
+			pic = self.pic[:,:][:,:,color]
+			m = median(pic)
+			st = std(pic)
+			pic -= m
 			filt = vconv(self.pic[:,:][:,:,color],kernel,mode='constant',cval=0.0)/\
 													vconv(ones(self.pic[:,:][:,:,color].shape),kernel,mode='constant',cval=0.0)
-			diff = orig - filt
+			diff = pic - filt
 			dex = where(diff == min(diff))
-			scl = orig[dex]/filt[dex]
+			scl = pic[dex]/filt[dex]
 			
-			self.pic[:,:][:,:,color] = (orig - scl*filt) >max([st,10])
+			self.pic[:,:][:,:,color] = (pic - scl*filt) >max([st,10])
 			
 		return self
 		
@@ -64,17 +64,17 @@ class newt:
 		
 		kernel = self.kernelmaker(kernel)
 		for color in range(3):
-			orig = self.pic[:,:][:,:,color]
-			m = median(orig)
-			st = std(orig)
-			orig -= m
+			pic = self.pic[:,:][:,:,color]
+			m = median(pic)
+			st = std(pic)
+			pic -= m
 			filt = vconv(self.pic[:,:][:,:,color],kernel,mode='constant',cval=0.0)/\
 													vconv(ones(self.pic[:,:][:,:,color].shape),kernel,mode='constant',cval=0.0)
-			diff = orig - filt
+			diff = pic - filt
 			dex = where(diff == min(diff))
-			scl = orig[dex]/filt[dex]
+			scl = pic[dex]/filt[dex]
 			for step in range(25):
-				self.pic[:,:][:,:,color] += (orig - step*scl*filt/25)>max([st,10])
+				self.pic[:,:][:,:,color] += (pic - step*scl*filt/25)>max([st,10])
 			self.pic[:,:][:,:,color]=self.pic[:,:][:,:,color]>75
 		return self
 	
