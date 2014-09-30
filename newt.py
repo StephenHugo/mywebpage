@@ -60,7 +60,7 @@ class newt:
 			
 		return self
 		
-	def dline(self,kernel='d 3'):
+	def dline(self,kernel='g 3'):
 		
 		kernel = self.kernelmaker(kernel)
 		for color in range(3):

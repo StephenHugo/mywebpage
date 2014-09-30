@@ -44,27 +44,44 @@ def index():
 		url = req.form['link']
 		filtertype = req.form['button']
 		if not url:
-			return render_template('projects.html')
+			return render_template('scientific.html')
 		elif (filtertype == 'none'):
-			return render_template('projects.html')
+			return render_template('scientific.html')
+		
+		flash(url.replace(':','%3A').replace('/','%2F'))
+		
+		if (filtertype == 'asf'):
+			return render_template('asffilter.html')			
+		else:
+			return redirect(url)
+	else:
+		return render_template('scientific.html')
+	
+@projects.route('/projects/standard', methods=['GET', 'POST'])
+def standard():
+	if req.method == 'POST':
+		url = req.form['link']
+		filtertype = req.form['button']
+		if not url:
+			return render_template('standard.html')
+		elif (filtertype == 'none'):
+			return render_template('standard.html')
 		
 		flash(url.replace(':','%3A').replace('/','%2F'))
 		if (filtertype == 'highboost'):		
 			return render_template('highboost.html')
 		elif (filtertype == 'laplacian'):
 			return render_template('laplacian.html')
-		elif (filtertype == 'asf'):
-			return render_template('asffilter.html')			
 		else:
 			return redirect(url)
 	else:
-		return render_template('projects.html')
-	 
+		return render_template('standard.html')
+	
 @process.route('/processed')
 def highboost():
 	url = req.args.get('link')
 	if not url:
-		return render_template('projects.html')
+		return render_template('standard.html')
 	
 	try:
 		# download the image from the url
@@ -98,7 +115,7 @@ def highboost():
 def laplacian():
 	url = req.args.get('link')
 	if not url:
-		return render_template('projects.html')
+		return render_template('scientific.html')
 	
 	try:
 		# download the image from the url
@@ -131,7 +148,7 @@ def laplacian():
 def asf():
 	url = req.args.get('link')
 	if not url:
-		return render_template('projects.html')
+		return render_template('scientific.html')
 	
 	try:
 		# download the image from the url

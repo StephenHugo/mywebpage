@@ -1,28 +1,17 @@
 {% extends "base.html" %}
 {% block body %}
 	
-	<div id="second"><center>
-		{% with messages = get_flashed_messages() %}
-			{% if messages %}
-				{% for message in messages %}
-					{% block filterinfo %}{% endblock %}
-					
-				{% endfor %}
-			{% else %}
-				<center><div id="first">
-					<form>
-						<p>This section allows you to try out several image processing filters using links to your own images
-						(or get one from <a href="https://www.flickr.com/explore/interesting/7days/">Flickr</a>)!</p>
-						Please, enter an image url:
-						<input type="text" value="" name="link"><button type="submit" value="none" name="button" formmethod="post">Clear</button>
-						<br><br>
-						<button type="submit" value="asf" name="button" formmethod="post">Automated Spatial Filtering</button>
-						<button type="submit" value="highboost" name="button" formmethod="post">High boost filter</button>
-						<button type="submit" value="laplacian" name="button" formmethod="post">Laplacian filter</button>
-						
-					</form>
-				</div></center>
-			{% endif %}
-		{% endwith %}
-	</center></div>
+	<div id="homepage">
+	<center><h1>Image Processing</h1>
+	<div id="nav2">	
+	<b>
+		<a href="{{ url_for('projects.index') }}">Scientific Imaging</a>
+		- <a href="{{ url_for('projects.standard') }}">Standard Images</a>
+	</b>
+</div>
+	</center>
+</div>
+
+	{% block types %}{% endblock %}
+	
 {% endblock %}

@@ -1,4 +1,4 @@
-{% extends "projects.html" %}
+{% extends "scientific.html" %}
 {% block filterinfo %}
 	
 	{% with messages = get_flashed_messages() %}
@@ -9,7 +9,7 @@
 					Based on the difference, a scale factor is determined and multiplied to the original convolution result, decreasing its overall intensity.
 					A second subtraction from the original image returns a high pass image that is easily segmented by a constant threshold value, 
 					which is not possible in unmodified fluorescent images. Click to save or get a url to post this image elsewhere.</p>
-					<center><a href="#" onClick="history.go(-1);return true;">Would you like to try something different?</a></center>
+					<center><a href="#" onClick="history.go(-1);return true;">Would you like to try something different?</a></center><br>
 				<a href="/asf?link={{message}}"><img src="/asf?link={{message}}"></a>
 					<p id="publication">Fluorescent tags and dyes are typically targeted to specific proteins in the cell to aid in imaging several structures/processes simultaneously.
 					For that reason, each color channel has been split into a new image, processed individually and stacked vertically.
