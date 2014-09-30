@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Map Generator</title>
+		<link rel="stylesheet" type="text/css" href="/static/style.css" />
+		<link rel="icon" href="/static/face.ico" type="image/icon"> 
+		{% block heady %}{% endblock %}
+		<!-- Facebook -->
+			<meta property="og:image" content="" />
+			<meta property="og:title" content="Map Generator"/>
+			<meta property="og:description" content="Map Generator"/>
+		<!-- End Facebook -->
+	</head>
+	<body>	
+		<br><br>
+		<div id="second"><center>
+		{% with messages = get_flashed_messages() %}
+			{% if messages %}
+
+			{% else %}
+			
+				<center><div id="first">
+					<form>
+						Please, enter the desired map size from 50 to 200 blocks:
+						<input type="text" value="75" name="size">
+						<br><br>
+						<button type="submit" name="button" formmethod="post">Generate Map!</button>
+						
+						
+					</form>
+					<br>
+					Refresh the page for a new map.
+				</div></center>
+			{% endif %}
+		{% endwith %}
+	</center></div>
+		
+	</body>
+</html>

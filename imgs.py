@@ -14,7 +14,7 @@ im = img.open(sIO(res.content))
 # convert the PIL image to a numpy array and turn it into a newt image
 pic = newt(np.array(im, dtype=np.double))
 # do a convolution with a 3x3 disk
-pic.dhat('d 7').shw()
+pic.highboost('g 17').shw()
 
 
 #pic2 = pic[:,:][:,:,[2, 0, 1]]
