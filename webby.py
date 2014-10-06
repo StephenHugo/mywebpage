@@ -188,64 +188,135 @@ def asf():
 @mapgenerator.route('/mapgen', methods=['GET', 'POST'])
 def index():
 	if req.method == 'POST':
+		dngntype = req.form['button']
 		siz = double(req.form['size'])
-		siz = min([max([siz, 50]), 200])
-		pic = random.randint(-1, 2, size=(siz, siz))
-		temp = zeros(pic.shape);
-		value = 1
-
-		def pos(x, y):
-			if (x<0):
-				x=pic.shape[0]-1
-			elif (x>pic.shape[0]-1):
-				x=0
-			if (y<0):
-				y=pic.shape[1]-1
-			elif (y>pic.shape[1]-1):
-				y=0 
-			return x, y
-
-		while (value !=0):
-			for row in range(pic.shape[0]):
-				for col in range(pic.shape[1]):
-					temp[row, col] = pic[pos(row-1, col-1)] + pic[pos(row, col-1)] + pic[pos(row+1, col-1)] +\
-													pic[pos(row-1, col)] + pic[pos(row, col)] + pic[pos(row+1, col)] +\
-													pic[pos(row-1, col+1)] + pic[pos(row, col+1)] + pic[pos(row+1, col+1)]
-					temp[row, col] =  double(temp[row, col] > 0) - double(temp[row, col] < 0)
-
-			value = sum(pic[:]-temp[:])
-			
-			for row in range(pic.shape[0]):
-				for col in range(pic.shape[1]):
-					pic[row, col] = temp[row, col]
-
-		pic = random.randint(-1, 2, size=(siz, siz, 3))
-
-		neg = 255, 255, 255
-		zer = 255, 134, 156
-		pos = 12, 163, 255
-
-		for row in range(pic.shape[0]):
-				for col in range(pic.shape[1]):
-					if (temp[row, col] ==-1):
-						pic[row,col] = neg
-					elif (temp[row, col] ==0):
-						pic[row, col] = zer
-					else:
-						pic[row, col] = pos
-						
-		im = img.fromarray(pic.astype('uint8'))
-		im = im.resize((500, 500)) 
-		
-		# save the new image
-		buff = sIO()
-		im.save(buff, 'JPEG', quality=90)
-		
-		buff.seek(0)
-		
-		return send_file(buff, mimetype='image/jpeg')
+		flash(siz)
+		if (dngntype == 'original'):		
+			return render_template('curvy.html')
+		elif (dngntype == 'boxes'):
+			return render_template('boxes.html')
+		else:
+			return render_template('mapgen.html')
 	else:
 		return render_template('mapgen.html')
+		
+@mapgenerator.route('/curvymap')
+def curvymap():
+	siz = double(req.args.get('size'))
+	siz = min([max([siz, 50]), 200])
+	pic = random.randint(-1, 2, size=(siz, siz))
+	temp = zeros(pic.shape);
+	value = 1
+
+	def pos(x, y):
+		if (x<0):
+			x=pic.shape[0]-1
+		elif (x>pic.shape[0]-1):
+			x=0
+		if (y<0):
+			y=pic.shape[1]-1
+		elif (y>pic.shape[1]-1):
+			y=0 
+		return x, y
+	
+	while (value !=0):
+		for row in range(pic.shape[0]):
+			for col in range(pic.shape[1]):
+				temp[row, col] = pic[pos(row-1, col-1)] + pic[pos(row, col-1)] + pic[pos(row+1, col-1)] +\
+												pic[pos(row-1, col)] + pic[pos(row, col)] + pic[pos(row+1, col)] +\
+												pic[pos(row-1, col+1)] + pic[pos(row, col+1)] + pic[pos(row+1, col+1)]
+				temp[row, col] =  double(temp[row, col] > 0) - double(temp[row, col] < 0)
+
+		value = sum(pic[:]-temp[:])
+		
+		for row in range(pic.shape[0]):
+			for col in range(pic.shape[1]):
+				pic[row, col] = temp[row, col]
+
+	pic = random.randint(-1, 2, size=(siz, siz, 3))
+
+	neg = 255, 255, 255
+	zer = 255, 134, 156
+	pos = 12, 163, 255
+
+	for row in range(pic.shape[0]):
+			for col in range(pic.shape[1]):
+				if (temp[row, col] ==-1):
+					pic[row,col] = neg
+				elif (temp[row, col] ==0):
+					pic[row, col] = zer
+				else:
+					pic[row, col] = pos
+					
+	im = img.fromarray(pic.astype('uint8'))
+	im = im.resize((500, 500)) 
+	
+	# save the new image
+	buff = sIO()
+	im.save(buff, 'JPEG', quality=90)
+	
+	buff.seek(0)
+	
+	return send_file(buff, mimetype='image/jpeg')
+	
+@mapgenerator.route('/boxesmap')
+def boxesmap():
+	siz = double(req.args.get('size'))
+	siz = min([max([siz, 50]), 200])
+	pic = random.randint(-1, 2, size=(siz, siz))
+	temp = zeros(pic.shape);
+	value = 1
+
+	def pos(x, y):
+		if (x<0):
+			x=pic.shape[0]-1
+		elif (x>pic.shape[0]-1):
+			x=0
+		if (y<0):
+			y=pic.shape[1]-1
+		elif (y>pic.shape[1]-1):
+			y=0 
+		return x, y
+	
+	for t in range(20):
+		for row in range(pic.shape[0]):
+			for col in range(pic.shape[1]):
+				temp[row, col] = pic[pos(row, col-1)] +\
+												pic[pos(row-1, col)] + pic[pos(row, col)] + pic[pos(row+1, col)] +\
+												pic[pos(row, col+1)]
+				temp[row, col] =  double(temp[row, col] > 0) - double(temp[row, col] < 0)
+
+		value = sum(pic[:]-temp[:])
+		
+		for row in range(pic.shape[0]):
+			for col in range(pic.shape[1]):
+				pic[row, col] = temp[row, col]
+
+	pic = random.randint(-1, 2, size=(siz, siz, 3))
+
+	neg = 255, 255, 255
+	zer = 255, 134, 156
+	pos = 12, 163, 255
+
+	for row in range(pic.shape[0]):
+			for col in range(pic.shape[1]):
+				if (temp[row, col] ==-1):
+					pic[row,col] = neg
+				elif (temp[row, col] ==0):
+					pic[row, col] = zer
+				else:
+					pic[row, col] = pos
+					
+	im = img.fromarray(pic.astype('uint8'))
+	im = im.resize((500, 500)) 
+	
+	# save the new image
+	buff = sIO()
+	im.save(buff, 'JPEG', quality=90)
+	
+	buff.seek(0)
+	
+	return send_file(buff, mimetype='image/jpeg')
 	 
 app.register_blueprint(home)
 app.register_blueprint(projects)

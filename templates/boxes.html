@@ -1,0 +1,13 @@
+{% extends "mapgen.html" %}
+{% block maptype %}
+	
+	{% with messages = get_flashed_messages() %}
+		{% if messages %}
+			{% for message in messages %}
+					
+				<a href="/boxesmap?size={{message}}"><img src="/boxesmap?size={{message}}"></a>
+				
+			{% endfor %}
+		{% endif %}
+	{% endwith %}
+{% endblock %}

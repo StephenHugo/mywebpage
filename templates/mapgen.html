@@ -12,28 +12,29 @@
 		<!-- End Facebook -->
 	</head>
 	<body>	
-		<br><br>
+		<br>
 		<div id="second"><center>
 		{% with messages = get_flashed_messages() %}
-			{% if messages %}
-
-			{% else %}
-			
+				{% for message in messages %}
+					{% block maptype %}{% endblock %}
+					<br>Refresh the page for a new map.<br><br>
+				{% endfor %}
 				<center><div id="first">
 					<form>
 						Please, enter the desired map size from 50 to 200 blocks:
 						<input type="text" value="75" name="size">
 						<br><br>
-						<button type="submit" name="button" formmethod="post">Generate Map!</button>
+						<button type="submit" value="original" name="button" formmethod="post"><img src="/static/img/curvy.jpg"><br>Generate Map!</button>
+						<button type="submit" value="boxes" name="button" formmethod="post"><img src="/static/img/boxes.jpg"><br>Generate Map!</button>
 						
 						
 					</form>
 					<br>
-					Refresh the page for a new map.
+					
 				</div></center>
-			{% endif %}
+				
 		{% endwith %}
 	</center></div>
-		
+
 	</body>
 </html>
