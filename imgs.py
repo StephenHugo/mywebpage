@@ -10,12 +10,12 @@ from time import time
 res = requests.get("https://farm8.staticflickr.com/7530/15987222858_a5fcece7f5_b.jpg")
 #res = requests.get("https://farm4.staticflickr.com/3739/9662657582_0956c7ee4c.jpg")
 # open the image using PIL
-im = img.open(sIO(res.content))
-#im = img.open('C:\Users\Dozey\Py\hmm\link.png')
+#im = img.open(sIO(res.content))
+im = img.open('C:/Users/Dozey/Py/hmm/static/img/face.jpg')
 # convert the PIL image to a numpy array and turn it into a newt image
 pic = newt(np.array(im, dtype=np.double))
 # do a convolution with a 3x3 disk
-pic.varfilt('g 5').shw()
+pic.varfilt('g 3').shw()
 
 
 #pic2 = pic[:,:][:,:,[2, 0, 1]]
