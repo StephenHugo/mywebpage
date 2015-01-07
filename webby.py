@@ -52,7 +52,9 @@ def index():
 		flash(url.replace(':','%3A').replace('/','%2F'))
 		
 		if (filtertype == 'asf'):
-			return render_template('asffilter.html')			
+			return render_template('asffilter.html')	
+		if (filtertype == 'varfilt'):
+			return render_template('varfilter.html')	 
 		else:
 			return redirect(url)
 	else:
@@ -173,6 +175,40 @@ def asf():
 		green = 255*green/max(green)
 		blue = 255*blue/max(blue)
 		pic = vstack((red,green,blue))
+		im = img.fromarray(pic.astype('uint8'))
+		
+		# save the new image
+		buff = sIO()
+		im.save(buff, 'JPEG', quality=90)
+		
+		buff.seek(0)
+		
+		return send_file(buff, mimetype='image/jpeg')
+	except:
+		return redirect(url)
+		
+@process.route('/varfilt')
+def varfilt():
+	url = req.args.get('link')
+	if not url:
+		return render_template('standard.html')
+	
+	try:
+		# download the image from the url
+		res = requests.get(url)
+		
+		# open the image using PIL
+		im = img.open(sIO(res.content))
+		
+		# convert the PIL image to a numpy array and turn it into a newt image
+		pic = newt(array(im, dtype=double))
+		
+		# do a convolution with a 17x17 disk
+		pic.varfilt('g 5')
+		
+		# revert to PIL format
+		pic = pic.pic - min(pic.pic)
+		pic = 255*pic/max(pic)
 		im = img.fromarray(pic.astype('uint8'))
 		
 		# save the new image

@@ -42,6 +42,17 @@ class newt:
 													+m
 		return self
 		
+	def varfilt(self,kernel='g 7'):
+		
+		kernel = self.kernelmaker(kernel)
+		for color in range(3):
+			m = median(self.pic[:,:][:,:,color])
+			self.pic[:,:][:,:,color] = vconv(self.pic[:,:][:,:,color]**2, kernel, mode='constant',cval=0.0)/\
+													vconv(ones(self.pic[:,:][:,:,color].shape),kernel,mode='constant',cval=0.0)	- \
+													(vconv(self.pic[:,:][:,:,color], kernel, mode='constant',cval=0.0)/\
+													vconv(ones(self.pic[:,:][:,:,color].shape),kernel,mode='constant',cval=0.0))**2								
+		return self
+		
 	def dhat(self,kernel='d 3'):
 		
 		kernel = self.kernelmaker(kernel)
