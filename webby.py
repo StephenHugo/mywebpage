@@ -27,6 +27,10 @@ def index():
 def asf():
 	return render_template('asf.html')
 	
+@research.route('/research/migration')
+def migration():
+	return render_template('migration.html')
+	
 @home.route('/publications')
 def publications():
    return render_template('publications.html')
