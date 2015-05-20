@@ -53,7 +53,7 @@ def index():
 		elif (filtertype == 'none'):
 			return render_template('scientific.html')
 		
-		flash(url.replace(':','%3A').replace('/','%2F'))
+		flash(url.replace(':','%3A').replace('/','%2F').replace('?','%3F').replace('=','%3D').replace('&','%26'))
 		
 		if (filtertype == 'asf'):
 			return render_template('asffilter.html')	
@@ -74,7 +74,8 @@ def standard():
 		elif (filtertype == 'none'):
 			return render_template('standard.html')
 		
-		flash(url.replace(':','%3A').replace('/','%2F'))
+		flash(url.replace(':','%3A').replace('/','%2F').replace('?','%3F').replace('=','%3D').replace('&','%26'))
+		
 		if (filtertype == 'highboost'):		
 			return render_template('highboost.html')
 		elif (filtertype == 'laplacian'):
