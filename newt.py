@@ -54,6 +54,13 @@ class newt:
 													vconv(ones(self.pic[:,:][:,:,color].shape),kernel,mode='constant',cval=0.0))**2								
 		return self
 		
+	def srtfilt(self):
+		
+		for color in range(3):
+			self.pic[:,:][:,:,color] = sort(sort(self.pic[:,:][:,:,color]),0)
+											
+		return self
+		
 	def dhat(self,kernel='d 3'):
 		
 		kernel = self.kernelmaker(kernel)

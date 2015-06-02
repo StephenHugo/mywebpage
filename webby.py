@@ -83,7 +83,9 @@ def standard():
 		elif (filtertype == 'phasesym'):
 			return render_template('phasesym.html')	
 		elif (filtertype == 'phasesym2'):
-			return render_template('phasesym2.html')	 
+			return render_template('phasesym2.html')
+		elif (filtertype == 'srtfilt'):
+			return render_template('srtfilt.html')
 		else:
 			return redirect(url)
 	else:
@@ -288,6 +290,43 @@ def phasesym():
 		
 		# do stuff
 		pic.phasesym('energy')
+		
+		# revert to PIL format
+		#pic = pic.pic - min(pic.pic)
+		#pic = 255*pic/max(pic)
+		im = img.fromarray(pic.pic.astype('uint8'))
+		
+		# save the new image
+		buff = sIO()
+		im.save(buff, 'JPEG', quality=90)
+		
+		buff.seek(0)
+		
+		return send_file(buff, mimetype='image/jpeg')
+	except:
+		return redirect(url)
+		
+@process.route('/srtfilt')
+def srtfilt():
+	url = req.args.get('link')
+	if not url:
+		return render_template('standard.html')
+	
+	try:
+		# download the image from the url
+		res = requests.get(url)
+		
+		# open the image using PIL
+		im = img.open(sIO(res.content))
+		
+		# shrink very large images
+		im.thumbnail((512,512), img.ANTIALIAS)
+		
+		# convert the PIL image to a numpy array and turn it into a newt image
+		pic = newt(array(im, dtype=complex))
+		
+		# do stuff
+		pic.srtfilt()
 		
 		# revert to PIL format
 		#pic = pic.pic - min(pic.pic)
