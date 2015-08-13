@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 {% extends "research.html" %}
 {% block topics %}
 	
@@ -55,62 +54,4 @@
 	</div>
 	<br>
 	<br>
-=======
-{% extends "research.html" %}
-{% block topics %}
-	
-	<div id="publication">
-		
-		<center><div id="authors"><b>- Introduction - </b></div></center>
-		When researchers refer to the 'heterogeneity' of cells, part of the story relates to their shape.
-		In a culture dish, where hundred or thousands of cells can live, several factors can affect the shape of a cell.
-		Physical forces from the substrate (plastic, glass, or coated with a protein) or neighboring cells (as in a confluent monolayer) 
-		can influence how a single cell organizes its cytoskeleton to prevent damage or achieve migration: sometimes called mechanotransduction.
-		Chemical cues from nearby cells or upon drug treatment can also affect cytoskeleton organization through the activity of molecular networks
-		that alter the polymerization and de-polymerization of structural proteins like actin.
-		While some of the mechanisms of this system are known, a complete understanding of cell behavior in response to stimuli has not been constructed.<br>
-		<center style="margin-top:12px;margin-bottom:12px;">
-			<img src="/static/img/birds.jpg" style="padding-top:3px;">
-		</center>
-		<center style="margin-top:6px;margin-bottom:6px;"><b>- Development of Automated Spatial Filtering - </b></center>
-		In order to begin to put together a story of cell mechanics, my research at the University of Florida addressed the quantification of cell shape.
-		The shape of cells represents a snapshot of the underlying cytoskeleton architecture, a state reflecting the culmination of many physical and chemical cues.
-		By that concept, obtaining the most accurate boundary from an image of a single cell became paramount to my project.
-		This lead to the development of Automated Spatial Filtering (ASF) and a publication in 2013.
-		ASF is a segmentation strategy for fluorescent images of live cells, which outperforms a range of conventional methods. 
-		More information can be found in the Cell Boundaries section of the Research sub-menu,
-		and a working demonstration of the image processing algorithm is available in the Projects section.<br>
-		<center style="margin-top:6px;margin-bottom:6px;"><b>- Quantification of Cell Shape - </b></center>
-		With my tools in place, I began to image populations of live cells in 2-dimensional cultures.
-		The figure above is a summary of actual data, demonstrating three archetypal shape categories: Rounded, Elongated and Complex.
-		In that figure, NIH 3T3 fibroblast boundaries were plotted onto points corresponding to their circularity (a ratio of squared perimeter length to area) and eccentricity (length to width ratio).
-		<img src="/static/img/circecc.jpg" ALIGN="Right" style="padding-top:12px;padding-bottom:6px;padding-left:12px;">
-		While those parameters provided a good sense of the qualitative shape of a cell, a quantitative comparison of circularity and eccentricity
-		by analysis of variance (ANOVA) failed to reveal large (significant) distinctions between other cell types.
-		Furthermore, NIH cells treated with altered protein activity specifically designed to interfere with normal cytoskeleton organization also were not significantly different than control NIH cells by the ANOVA analysis.
-		Similar conclusions were encountered upon the statistical analysis of other cell parameters like average intensity, major/minor axis lengths, symmetry and average number of protrusions.
-		It was clear that a new tool to analyze cell boundaries was necessary to more finely distinguish cell shapes.<br>
-		<center style="margin-top:6px;margin-bottom:6px;"><b>- Cell Boundaries in Riemann Manifolds - </b></center>
-		The diagram below illustrates the central problem of performing standard statistics to measurements of shape parameters.
-		Four basic shapes are drawn along with their respective circularity values. Now, let's consider the caluclation of a 'mean' shape from certain distributions of these basic shapes.
-		<img src="/static/img/extrinsic.jpg" ALIGN="Left" style="padding-top:12px;padding-bottom:6px;padding-right:12px;">
-		First, consider the mean circularity between a collection of squares and triangles ([16 + 20]/2 = 18). This value would represent a rectangle!
-		Granted, a rectangle is similar to a square, but not a triangle. 
-		As a second example, consider the mean circularity between a rectangle and a triangle ([18 + 20]/2 = 19). 
-		Clearly, the 'mean' of those two shapes should not result in a cheese wedge shape.
-		What then might be the mean of a square and rectangle? A shorter rectangle? It's impossible to predict by such simple measurements.<br><br>
-		The most recent branch of my research (and the last chapter in my dissertation) dealt with the projection of cell boundaries onto Riemann manifolds.
-		In plain terms, the curvature of each cell boundary allows the calculation of a 'distance' between two shapes in a 'shape space' known as a manifold.
-		Unfortunately, we are currently seeking publication of our results, and I can explain little more than that on this site, but, please, get in touch with me if you are interested in this research, or any my previous research!
-		
-	</div>
-	
-	<br>
-	<br>
-	<div id="homepage">
-		<center><a href="#">Return to Top</a></center>
-	</div>
-	<br>
-	<br>
->>>>>>> fca3a7463e4794874630e2742401a8818e240036
 {% endblock %}
