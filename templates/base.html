@@ -1,3 +1,38 @@
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Stephen Hugo Arce</title>
+		<link rel="stylesheet" type="text/css" href="/static/style.css" />
+		<link rel="icon" href="/static/face.ico" type="image/icon"> 
+		{% block heady %}{% endblock %}
+		<!-- Facebook -->
+			<meta property="og:image" content="http://stephenhugo.herokuapp.com/static/img/face.jpg" />
+			<meta property="og:title" content="Stephen Hugo Arce"/>
+			<meta property="og:description" content="A summary of my research, working image processing demos, and a listing of professional awards, publications and acknowledgements."/>
+		<!-- End Facebook -->
+	</head>
+	<body>	
+	<a href="https://www.bme.ufl.edu/people/arce_stephen"><img style="float:left" src="/static/img/face.jpg"></a>
+		
+		<div id="nav">	
+			<b>
+				<a href="{{ url_for('home.index') }}">Home</a>
+				- <a href="{{ url_for('research.index') }}">Research</a>
+				- <a href="{{ url_for('projects.index') }}">Projects</a>
+				- <a href="{{ url_for('home.publications') }}">Publications/Presentations</a>
+				- <a href="{{ url_for('home.honors') }}">Honors/Awards</a>
+				- <a href="{{ url_for('home.about') }}">About</a>
+			</b>
+		</div>
+		
+
+		<div id="content">
+			{% block body %}{% endblock %}
+		</div>
+		
+	</body>
+=======
 <!DOCTYPE html>
 <html>
 	<head>
@@ -31,4 +66,5 @@
 		</div>
 		
 	</body>
+>>>>>>> fca3a7463e4794874630e2742401a8818e240036
 </html>

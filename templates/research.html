@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {% extends "base.html" %}
 {% block body%}
 
@@ -16,4 +17,24 @@
 	{% block topics %}{% endblock %}
 
 
+=======
+{% extends "base.html" %}
+{% block body%}
+
+<div id="homepage">
+	<center><h1>Research</h1>
+	<div id="nav2">	
+	<b>
+		<a href="{{ url_for('research.index') }}">Overview</a>
+		- <a href="{{ url_for('research.asf') }}">Cell Boundaries</a>
+		- <a href="{{ url_for('research.migration') }}">Simulating Cell Migration</a>
+	</b>
+</div>
+	</center>
+</div>
+
+	{% block topics %}{% endblock %}
+
+
+>>>>>>> fca3a7463e4794874630e2742401a8818e240036
 {% endblock %}

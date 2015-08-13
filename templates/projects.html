@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {% extends "base.html" %}
 {% block body %}
 	
@@ -14,4 +15,22 @@
 
 	{% block types %}{% endblock %}
 	
+=======
+{% extends "base.html" %}
+{% block body %}
+	
+	<div id="homepage">
+	<center><h1>Image Processing</h1>
+	<div id="nav2">	
+	<b>
+		<a href="{{ url_for('projects.index') }}">Scientific Imaging</a>
+		- <a href="{{ url_for('projects.standard') }}">Standard Images</a>
+	</b>
+</div>
+	</center>
+</div>
+
+	{% block types %}{% endblock %}
+	
+>>>>>>> fca3a7463e4794874630e2742401a8818e240036
 {% endblock %}

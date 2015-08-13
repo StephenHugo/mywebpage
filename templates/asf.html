@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {% extends "research.html" %}
 {% block topics %}
 	
@@ -40,4 +41,48 @@
 	</div>
 	<br>
 	<br>
+=======
+{% extends "research.html" %}
+{% block topics %}
+	
+	<div id="publication">
+		
+		<center><div id="authors"><b>- Segmentation of Fluorescent Images - </b></div></center>
+		Given a fluorescent image, it is difficult to segment the cell signal from the background for a variety of reasons: noise, focus, debris, type of probe, morphology, type of microscope system, etc.
+		Typically, the intensity of pixels corresponding to the cell signal will be greater than the background, which facilitates basic segmentation using a single threshold.
+		ImageJ has this<a href='http://imagej.net/docs/guide/146-28.html#sub:Threshold...[T]'>built-in</a>, providing several threshold options and allowing the setting of a manual threshold.
+		However, when images are captured, the light reaching the microscope camera will vary depending on the sample and the choice of UV light and exposure time.
+		The figure below shows a 'target boundary' that our eyes can see, then demonstrates the outcome from using a single threshold on images of the same exact cell, taken with different camera settings.
+		<br>
+		<center style="margin-top:12px;margin-bottom:12px;">
+			<img src="/static/img/badboundaries.jpg" style="padding-top:3px;">
+		</center>
+		One aspect of my graduate work dealt with automatically determining the cell boundary from a fluorescent image.
+		Automated analysis is important in drug discovery research since it allows the rapid analysis of a large amount of samples with higher speed than human interaction would allow.
+		The favored term is high-throughput, and it generally relies on faster computer algorithms that might be less accurate, rather than more sophisticated algorithms that take longer to process.
+		I<a href='http://www.nature.com/srep/2013/130724/srep02266/full/srep02266.html'>published</a> a new<a href='/static/acbd SHA.txt'>segmentation algorithm</a> that blends both accuracy and computation speed in order to aid research reliant on fluorescent imaging.
+		The figure below demonstrates my algorithm applied to the same set of images as above, showing a higher degree of consistency for most images.
+		<center style="margin-top:12px;margin-bottom:12px;">
+			<img src="/static/img/ASFboundaries.jpg" style="padding-top:3px;">
+		</center>
+		The above results leave some room for improvement, and since graduating I decided to compare my algorithm to others.
+		Instead of benchmarking their performance by the signal-to-noise ratio or some other arbitrary measure, I decided to measure the consistency of morphological cell parameters instead.
+		This type of benchmarking shows the importance of segmentation when assessing the heterogeneity of cell populations, since poor segmentation will introduce a high degree of variation in apparent cell morphology.
+		Roshan and I have been working on this over the winter and are preparing to submit a publication soon, based on the chart below.
+		<center style="margin-top:12px;margin-bottom:12px;">
+			<img src="/static/img/denoisechart.jpg" style="padding-top:3px;">
+		</center>
+		Here is the<a href='/static/alldataSHA.xlsx'>raw data in excel format</a>.
+		
+		
+	</div>
+
+	<br>
+	<br>
+	<div id="homepage">
+		<center><a href="#">Return to Top</a></center>
+	</div>
+	<br>
+	<br>
+>>>>>>> fca3a7463e4794874630e2742401a8818e240036
 {% endblock %}

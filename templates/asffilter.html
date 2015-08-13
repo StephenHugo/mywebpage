@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {% extends "scientific.html" %}
 {% block filterinfo %}
 	
@@ -31,4 +32,39 @@
 			{% endfor %}
 		{% endif %}
 	{% endwith %}
+=======
+{% extends "scientific.html" %}
+{% block filterinfo %}
+	
+	{% with messages = get_flashed_messages() %}
+		{% if messages %}
+			{% for message in messages %}
+				<p id="publication">The loaded image was processed by a high boost filter. 
+					First, the input image is convolved by a 7x7 pixel Gaussian kernel, then that result is subtracted from the original image.
+					Based on the difference, a scale factor is determined and multiplied to the original convolution result, decreasing its overall intensity.
+					A second subtraction from the original image returns a high pass image that is easily segmented by a constant threshold value, 
+					which is not possible in unmodified fluorescent images. Click to save or get a url to post this image elsewhere.</p>
+					<center><a href="#" onClick="history.go(-1);return true;">Would you like to try something different?</a></center><br>
+				<a href="/asf?link={{message}}"><img src="/asf?link={{message}}"></a>
+					<p id="publication">Fluorescent tags and dyes are typically targeted to specific proteins in the cell to aid in imaging several structures/processes simultaneously.
+					For that reason, each color channel has been split into a new image, processed individually and stacked vertically.
+					For small spots and fine structures, a 7x7 filter might be too large, and a 3x3 is suggested.
+					For fluorescent images with a lot of 'glare', a larger filter size might be appropriate. 
+					Lastly, the threshold used here is not from expectation maximization as described in my paper, but instead the median + one standard deviation.
+					Regardless of these caveats, the algorithm should work well for a wide range of imaging conditions.
+					Very low SNR images (noisy) might give ASF some trouble, so expect to see some denoising options here in the future.
+					</p>
+					
+					
+<br>
+<div id="homepage">
+	<center><a href="#">Return to Top</a></center>
+</div>
+<br>
+<br>
+				
+			{% endfor %}
+		{% endif %}
+	{% endwith %}
+>>>>>>> fca3a7463e4794874630e2742401a8818e240036
 {% endblock %}

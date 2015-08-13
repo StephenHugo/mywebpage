@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html>
 	<head>
@@ -37,4 +38,45 @@
 	</center></div>
 
 	</body>
+=======
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Map Generator</title>
+		<link rel="stylesheet" type="text/css" href="/static/style.css" />
+		<link rel="icon" href="/static/face.ico" type="image/icon"> 
+		{% block heady %}{% endblock %}
+		<!-- Facebook -->
+			<meta property="og:image" content="" />
+			<meta property="og:title" content="Map Generator"/>
+			<meta property="og:description" content="Map Generator"/>
+		<!-- End Facebook -->
+	</head>
+	<body>	
+		<br>
+		<div id="second"><center>
+		{% with messages = get_flashed_messages() %}
+				{% for message in messages %}
+					{% block maptype %}{% endblock %}
+					<br>Refresh the page for a new map.<br><br>
+				{% endfor %}
+				<center><div id="first">
+					<form>
+						Please, enter the desired map size from 50 to 200 blocks:
+						<input type="text" value="75" name="size">
+						<br><br>
+						<button type="submit" value="original" name="button" formmethod="post"><img src="/static/img/curvy.jpg"><br>Generate Map!</button>
+						<button type="submit" value="boxes" name="button" formmethod="post"><img src="/static/img/boxes.jpg"><br>Generate Map!</button>
+						
+						
+					</form>
+					<br>
+					
+				</div></center>
+				
+		{% endwith %}
+	</center></div>
+
+	</body>
+>>>>>>> fca3a7463e4794874630e2742401a8818e240036
 </html>

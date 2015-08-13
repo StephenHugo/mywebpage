@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {% extends "scientific.html" %}
 {% block filterinfo %}
 	
@@ -19,4 +20,27 @@
 			{% endfor %}
 		{% endif %}
 	{% endwith %}
+=======
+{% extends "scientific.html" %}
+{% block filterinfo %}
+	
+	{% with messages = get_flashed_messages() %}
+		{% if messages %}
+			{% for message in messages %}
+				<p id="publication">Simple sorting of RGB intensity. 
+				</p>
+					<center><a href="#" onClick="history.go(-1);return true;">Would you like to try something different?</a></center><br>
+				<a href="/srtfilt?link={{message}}"><img src="/srtfilt?link={{message}}"></a>				
+					
+<br>
+<div id="homepage">
+	<center><a href="#">Return to Top</a></center>
+</div>
+<br>
+<br>
+				
+			{% endfor %}
+		{% endif %}
+	{% endwith %}
+>>>>>>> fca3a7463e4794874630e2742401a8818e240036
 {% endblock %}

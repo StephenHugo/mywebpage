@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {% extends "research.html" %}
 {% block topics %}
 	
@@ -26,4 +27,34 @@
 	</div>
 	<br>
 	<br>
+=======
+{% extends "research.html" %}
+{% block topics %}
+	
+	<div id="publication">
+		
+		<center><div id="authors"><b>- Clustering Cell Shape During Migration - </b></div></center>
+		Through a collaboration with the<a href='http://ssamg.stat.fsu.edu/'>SSAMG</a> at FSU, I combined accurate cell boundary segmentation with the power of geodesic shape analysis.
+		The 2-D curves generated after segmentation of cell tracking images were projected onto a manifold that represents the shape space of closed curves, granting the ability to measure the distance between two cell shapes via minimal geodesic paths.
+		Using those distances, I applied<a href='http://www.timotheecour.com/'>Timothe Cour's</a> graph cut algorithm to cluster the shapes cells took over time, identifying common morphologies that may correspond with migration events.
+		<br>
+		<center style="margin-top:12px;margin-bottom:12px;">
+			<img src="/static/img/geodesicclustering.jpg" style="padding-top:3px;">
+		</center>
+		I am currently exploring the statistical properties of the shape space, centered around the mean shape of common migration morphologies.
+		My goal is to simulate and predict cell migration events using this approach.
+		<center style="margin-top:12px;margin-bottom:12px;">
+			<img src="/static/img/cellmig.jpg" style="padding-top:3px;">
+		</center>
+		
+	</div>
+	
+	<br>
+	<br>
+	<div id="homepage">
+		<center><a href="#">Return to Top</a></center>
+	</div>
+	<br>
+	<br>
+>>>>>>> fca3a7463e4794874630e2742401a8818e240036
 {% endblock %}
