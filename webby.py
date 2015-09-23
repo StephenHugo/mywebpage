@@ -7,7 +7,7 @@ from numpy import array, double, max, min, vstack, zeros, dstack, random, sum, z
 from newt import newt
 
 app = Flask(__name__)
-app.secret_key = '%\xdb\x1a[\xe9\x1d\x8bF\xd5\xc9\xad\xdc\x805\xd63\xca\xce\x11[\x1e\xe0\x06\xaf'
+app.secret_key = '\x94Fh\xd0\r\xb5\x8b\xf1P~|\xee\x8e4\xf6\x1d\x0f~\xab\x9b\xd5\xa6#\xb8'
 
 home = Blueprint('home', __name__)
 projects = Blueprint('projects', __name__)
