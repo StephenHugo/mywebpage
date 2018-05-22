@@ -7,7 +7,7 @@ from numpy import array, double, max, min, vstack, zeros, dstack, random, sum, z
 from newt import newt
 
 app = Flask(__name__)
-app.secret_key = 'doggy'
+app.secret_key = '\xe5\xeb\xa8P\xddcr\xa6\xb0\xa1!\x8f\x98\xf6\x0e\x15u\xd2\xaab@\xb9K\x05'
 
 home = Blueprint('home', __name__)
 projects = Blueprint('projects', __name__)
@@ -58,7 +58,9 @@ def index():
 		if (filtertype == 'asf'):
 			return render_template('asffilter.html')	
 		elif (filtertype == 'varfilt'):
-			return render_template('varfilter.html')	 
+			return render_template('varfilter.html')
+		elif (filtertype == 'hny'):
+			return render_template('hny.html')	
 		else:
 			return redirect(url)
 	else:
@@ -186,6 +188,48 @@ def asf():
 		green = 255*green/max(green)
 		blue = 255*blue/max(blue)
 		pic = vstack((red,green,blue))
+		im = img.fromarray(pic.astype('uint8'))
+		
+		# save the new image
+		buff = sIO()
+		im.save(buff, 'JPEG', quality=90)
+		
+		buff.seek(0)
+		
+		return send_file(buff, mimetype='image/jpeg')
+	except:
+		return redirect(url)
+
+@process.route('/hny')
+def hny():
+	url = req.args.get('link')
+	if not url:
+		return render_template('standard.html')
+	
+	try:
+		# download the image from the url
+		res = requests.get(url)
+		res2 = requests.get("https://c2.staticflickr.com/4/3007/2733380075_7c8019d4eb.jpg")
+		# https://c2.staticflickr.com/6/5330/8808102199_bff96f1f80_o.jpg
+		
+		# open the image using PIL
+		im = img.open(sIO(res.content))
+		im2 = img.open(sIO(res2.content)).resize(im.size, img.ANTIALIAS)
+		
+		# convert the PIL image to a numpy array and turn it into a newt image
+		a = array(im, dtype=double)
+		b = array(im2, dtype=double)
+		for color in range(3):
+			a[:,:][:,:,color] = a[:,:][:,:,0]/3 + a[:,:][:,:,1]/3 + a[:,:][:,:,2]/3
+			a[:,:][:,:,color] = 4*a[:,:][:,:,color]/7 + 3*b[:,:][:,:,color]/7
+		pic = newt(a)
+		
+		# do a convolution with a 17x17 disk
+		#pic.mix(array(im2, dtype=double))
+		
+		# revert to PIL format
+		pic = pic.pic - min(pic.pic)
+		pic = 255*pic/max(pic)
 		im = img.fromarray(pic.astype('uint8'))
 		
 		# save the new image

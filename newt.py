@@ -16,12 +16,17 @@ class newt:
 		im = img.fromarray(pic.astype('uint8'))
 		im.show()
 		
+	def mix(self, other):
+		pic = 255*self.pic/max(self.pic)
+		pic2 = 255*other/max(other)
+		for color in range(3):
+			pic[:,:][:,:,color] = pic[:,:][:,:,0]/3 + pic[:,:][:,:,1]/3 + pic[:,:][:,:,2]/3
+			#pic[:,:][:,:,color] = 3*pic[:,:][:,:,color]/7 + 4*pic2[:,:][:,:,color]/7
+		
 	def srt(self):
 		pic = 255*self.pic/max(self.pic)
 		for color in range(3):
 			pic[:,:][:,:,color] = sort(sort(pic[:,:][:,:,color],(color+1)%2),color%2)
-		im = img.fromarray(pic.astype('uint8'))
-		im.show()
 		
 	def conv(self,kernel='lap 3'):
 		
@@ -41,6 +46,9 @@ class newt:
 													kernel,mode='constant',cval=0.0)/\
 													vconv(ones(self.pic[:,:][:,:,color].shape),kernel,mode='constant',cval=0.0)\
 													+m
+			self.pic[:,:][:,:,color] = self.pic[:,:][:,:,color] - min(self.pic[:,:][:,:,color])
+			self.pic[:,:][:,:,color] = 255-255*self.pic[:,:][:,:,color]/max(self.pic[:,:][:,:,color])
+											
 		return self
 		
 	def varfilt(self,kernel='g 7'):

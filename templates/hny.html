@@ -1,0 +1,22 @@
+{% extends "scientific.html" %}
+{% block filterinfo %}
+	
+	{% with messages = get_flashed_messages() %}
+		{% if messages %}
+			{% for message in messages %}
+				<p id="publication">Happy New Year!
+				</p>
+					<center><a href="#" onClick="history.go(-1);return true;">Would you like to try something different?</a></center><br>
+				<a href="/hny?link={{message}}"><img src="/hny?link={{message}}"></a>				
+					
+<br>
+<div id="homepage">
+	<center><a href="#">Return to Top</a></center>
+</div>
+<br>
+<br>
+				
+			{% endfor %}
+		{% endif %}
+	{% endwith %}
+{% endblock %}
