@@ -5,6 +5,7 @@ from StringIO import StringIO as sIO
 from PIL import Image as img
 from numpy import array, double, max, min, vstack, zeros, dstack, random, sum, zeros
 from newt import newt
+from wordcloud import WordCloud as wc
 
 app = Flask(__name__)
 app.secret_key = '\xe5\xeb\xa8P\xddcr\xa6\xb0\xa1!\x8f\x98\xf6\x0e\x15u\xd2\xaab@\xb9K\x05'
@@ -134,29 +135,17 @@ def laplacian():
 		return render_template('scientific.html')
 	
 	try:
-		# download the image from the url
-		res = requests.get(url)
-		
-		# open the image using PIL
-		im = img.open(sIO(res.content))
-		
-		# convert the PIL image to a numpy array and turn it into a newt image
-		pic = newt(array(im, dtype=double))
-		
-		# do a convolution with a nearly laplacian kernel (to avoid dividing by 0)
-		pic.conv('lap 3')
+            wordcloud = wc().generate(url)
 
-		# revert to PIL format
-		pic = 0.8*255*pic.pic/max(pic.pic)
-		im = img.fromarray(pic.astype('uint8'))
+            im = wordcloud.to_image()
 		
-		# save the new image
-		buff = sIO()
-		im.save(buff, 'JPEG', quality=90)
+            # save the new image
+            buff = sIO()
+            im.save(buff, 'JPEG', quality=90)
 		
-		buff.seek(0)
+            buff.seek(0)
 		
-		return send_file(buff, mimetype='image/jpeg')
+            return send_file(buff, mimetype='image/jpeg')
 	except:
 		return redirect(url)
 		
