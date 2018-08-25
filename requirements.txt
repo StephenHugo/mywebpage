@@ -1,7 +1,7 @@
 Jinja2==2.7.2
 SQLAlchemy==0.9.4
-flask==0.10.1
-gunicorn==19.1.0
+flask==0.12.3
+gunicorn==19.5.0
 werkzeug==0.9.6
 Pillow==2.4.0
 requests==2.3.0
